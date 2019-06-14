@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getAlbums, SELECT_ALBUM } from '../actions/actions';
+import { getAlbums } from '../actions/actions'
+import { SELECT_ARTIST } from '../constants/actionTypes';
 
 class Artist extends Component {
   constructor(props) {
@@ -9,7 +10,14 @@ class Artist extends Component {
   }
 
   componentDidMount() {
-    this.props.getAlbums(this.props.artist);
+    const artistId = this.props.location.state.artistId;
+    this.props.selectArtist(artistId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.artist !== prevProps.artist) {
+      this.props.getAlbums(this.props.artist);
+    }
   }
 
   render() {
@@ -25,7 +33,7 @@ class Artist extends Component {
         return(
           <div className="col-sm-6 " key={i}>
               <div className="card shadow p-3 mb-5 bg-white rounded" >
-                <Link to="/album" onClick={() => {this.props.selectAlbum(item.id)}} >
+                <Link to={{pathname: '/album', state: { albumId: item.id }}}>
                 <div className="row">
                   <div className="col">
                     {image}
@@ -51,6 +59,7 @@ class Artist extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     artist: state.artistSelectedId,
     albums: state.albumsSearchResult
@@ -60,7 +69,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAlbums: (id) => dispatch(getAlbums(id)),
-    selectAlbum: (payload) => { dispatch({type: SELECT_ALBUM, payload: payload}) }
+    selectArtist: (payload) => { dispatch({type: SELECT_ARTIST, payload: payload}) }
   }
 }
 

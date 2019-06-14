@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { SELECT_ARTIST } from '../constants/actionTypes';
 
 class ArtistsList extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class ArtistsList extends Component {
       return(
         <div className="col-sm-6 " key={i}>
             <div className="card shadow p-3 mb-5 bg-white rounded" >
-            <Link to="/artist" onClick={() => {this.props.selectArtist(item.id)}} >
+            <Link to={{pathname: '/artist', state: { artistId: item.id }}}>
               <div className="row">
                 <div className="col">
                   {image}
@@ -59,7 +58,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectArtist: (payload) => { dispatch({type: SELECT_ARTIST, payload: payload}) }
   }
 }
 
