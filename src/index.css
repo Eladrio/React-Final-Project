@@ -14,3 +14,8 @@ li {
     display: inline-block;
     margin: 0 10px;
 }
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+

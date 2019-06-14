@@ -4,7 +4,7 @@ class HomeView extends Component {
     render() {
         return (
             <article className="home-view">
-                Home View
+
             </article>
         );
     }

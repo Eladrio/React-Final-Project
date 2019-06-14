@@ -1,0 +1,4 @@
+export const FETCH_ARTISTS = "FETCH_ARTISTS";
+export const SELECT_ARTIST = "SELECT_ARTIST";
+export const FETCH_ALBUMS = "FETCH_ALBUMS";
+export const SELECT_ALBUM = "SELECT_ALBUM";
