@@ -1,0 +1,10 @@
+.table-container {
+  height: 79vw;
+  width: 60vw;
+  margin: 3vh auto;
+}
+
+table a{
+  text-decoration: none;
+  color: #1ED762;
+}

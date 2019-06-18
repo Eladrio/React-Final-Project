@@ -3,3 +3,6 @@ export const SELECT_ARTIST = "SELECT_ARTIST";
 export const FETCH_ALBUMS = "FETCH_ALBUMS";
 export const SELECT_ALBUM = "SELECT_ALBUM";
 export const FETCH_TRACKS = "FETCH_TRACKS";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const SUBMIT_INPUT = "SUBMIT_INPUT";

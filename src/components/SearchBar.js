@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/SearchBar.css'
 
 function SearchBar(props) {
 
@@ -16,26 +17,25 @@ function SearchBar(props) {
 
   const filterText = props.filterText;
   return (
-    <div className="input-group col-md-4">
-      <form>
+    <div className="card-body">
+      <form className="form-inline my-2 my-lg-0">
         <div className="row">
           <div className="col-auto">
-
-        <span className="input-group-append">
-          <button className="btn btn-outline-secondary border-left-0 border" type="button">
-            <i className="fa fa-search"></i>
-          </button>
-        </span>
+            <span className="input-group-append">
+              <button className="btn btn-outline-secondary border-left-0 border" type="button">
+                <i className="fa fa-search"></i>
+              </button>
+            </span>
           </div>
           <div className="col">
-          <input
-          type="text"
-          className="form-control py-2 border-right-0 border"
-          placeholder="Search..."
-          value={filterText}
-          onBlur={handleSubmit}
-          onKeyPress={handleEnterKeyPress}
-        />
+            <input
+              type="search"
+              className="form-control py-2 border-right-0 border mr-sm-2"
+              placeholder="Search..."
+              value={filterText}
+              onBlur={handleSubmit}
+              onKeyPress={handleEnterKeyPress}
+            />
           </div>
         </div>
     </form>
@@ -44,3 +44,7 @@ function SearchBar(props) {
 }
 
 export default SearchBar;
+{/* <form class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+</form> */}

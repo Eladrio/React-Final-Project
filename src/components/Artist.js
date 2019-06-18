@@ -1,76 +1,63 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { getAlbums } from '../actions/actions'
-import { SELECT_ARTIST } from '../constants/actionTypes';
+import SearchHeader from './SearchHeader';
+import Footer from './Footer';
+import '../css/Artist.css'
 
-class Artist extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    const artistId = this.props.location.state.artistId;
-    this.props.selectArtist(artistId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.artist !== prevProps.artist) {
-      this.props.getAlbums(this.props.artist);
-    }
-  }
-
-  render() {
-    let selection = [];
-    if (this.props.albums.length) {
-      selection= this.props.albums.map((item,i) => {
-        let alt = `Image of ${item.name}`
-        let image = (item.img)
-          ?
-            image = <img src={item.img.url} className="img-fluid" alt={alt}/>
-          :
-            image = <img className="img-fluid" src={require('../assets/no-image.jpg')} alt={alt}/>
-        return(
-          <div className="col-sm-6 " key={i}>
-              <div className="card shadow p-3 mb-5 bg-white rounded" >
-                <Link to={{pathname: '/album', state: { albumId: item.id }}}>
-                <div className="row">
-                  <div className="col">
-                    {image}
-                  </div>
-                  <div className="col-8">
-                    <h4>{item.name}</h4>
-                  </div>
-                </div>
-              </Link>
-              </div>
-          </div>
-        );
-      });
-    }
+function Artist(props) {
+  console.log("ADENTRO DE ARTIST LA FUNCION");
+  let albums = [];
+  console.log(props);
+  albums = props.albums.map((item,i) => {
+    let alt = `Image of ${item.name}`
     return(
-      <div className="container">
-        <div className="row">
-          {selection}
+      <div className="col-sm-6 " key={i}>
+        <div className="card shadow p-3 mb-5 bg-white rounded" >
+          <Link to={{pathname: '/album', state: { albumId: item.id, albumImg: item.img, albumName: item.name }}}>
+            <div className="row">
+              <div className="col">
+                <img className="card-img img-fluid" src={item.img.url} alt={item.name}></img>
+              </div>
+              <div className="col-8">
+                <h4>{item.name}</h4>
+                <h4>{item.release}</h4>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
-    )
-  }
+    );
+  });
+
+  return(
+    <div>
+      <SearchHeader />
+      <div className="container">
+        <div className="card shadow p-3 mb-5 bg-white rounded" >
+          <div className="row">
+            <div className="col">
+              <img className="card-img img-fluid" src={props.artist.img} alt={props.artist.name} />
+            </div>
+            <div className="col-8">
+              <h3>{props.artist.name}</h3>
+              <h3>{props.artist.genre}</h3>
+            </div>
+          </div>
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
+            <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
+            <li className="breadcrumb-item active" aria-current="page"><span>{props.artist.name}</span></li>
+          </ol>
+        </nav>
+        <div className="row">
+          {albums}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    artist: state.artistSelectedId,
-    albums: state.albumsSearchResult
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAlbums: (id) => dispatch(getAlbums(id)),
-    selectArtist: (payload) => { dispatch({type: SELECT_ARTIST, payload: payload}) }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Artist);
+export default Artist;

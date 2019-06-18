@@ -1,0 +1,25 @@
+.pos-f-t {
+  background-color: #181411;
+}
+
+ul {
+  overflow: hidden;
+  left: 0;
+  top: 100%;
+  width: 100%;
+}
+
+.visible-only-mobile {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .visible-only-mobile {
+    display: none !important;
+  }
+  .collapse.dont-collapse-sm {
+    display: inline-block;
+    height: auto !important;
+    visibility: visible;
+  }
+}

@@ -2,30 +2,17 @@ import React, {Component} from 'react';
 import Home from './Home';
 import { Redirect } from 'react-router';
 import { connect } from "react-redux";
-import { getArtists } from '../actions/actions';
+import '../css/index.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(input) {
-    this.props.getArtists(input);
   }
 
   render() {
-    if (this.props.searchInputText) {
-      return(
-        <Redirect to={{
-            pathname: '/artists'
-          }}
-        />
-      );
-    }
     return(
-      <div className="container">
-        <Home handleChange={this.handleChange}/>
+      <div id='main-div' className="container-fluid">
+        <Home />
       </div>
     );
   }
@@ -40,10 +27,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getArtists: (query) => dispatch(getArtists(query))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

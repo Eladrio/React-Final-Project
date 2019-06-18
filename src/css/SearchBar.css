@@ -1,0 +1,8 @@
+.has-search .form-control {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col, .col-auto {
+  padding: 0;
+}
