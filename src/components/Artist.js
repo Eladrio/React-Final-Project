@@ -5,15 +5,13 @@ import Footer from './Footer';
 import '../css/Artist.css'
 
 function Artist(props) {
-  console.log("ADENTRO DE ARTIST LA FUNCION");
   let albums = [];
-  console.log(props);
   albums = props.albums.map((item,i) => {
     let alt = `Image of ${item.name}`
     return(
       <div className="col-sm-6 " key={i}>
         <div className="card shadow p-3 mb-5 bg-white rounded" >
-          <Link to={{pathname: '/album', state: { albumId: item.id, albumImg: item.img, albumName: item.name }}}>
+          <Link to={{pathname: '/album', state: { albumId: item.id, albumImg: item.img, albumName: item.name, albumRelease: item.release }}}>
             <div className="row">
               <div className="col">
                 <img className="card-img img-fluid" src={item.img.url} alt={item.name}></img>

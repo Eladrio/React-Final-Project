@@ -28,11 +28,7 @@ class ArtistsList extends Component {
 
   render() {
     let selection;
-    console.log(this.props);
     if (this.props.artistsIds) {
-      console.log("ADENTRO DEL IF");
-      console.log(this.props.artistsIds);
-      console.log(this.props.artistsSearchResult);
       selection= this.props.artistsIds.map((item,i) => {
         let artist = this.props.artistsSearchResult[item];
         let alt = `Image of ${artist.name}`
@@ -96,7 +92,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-//    getArtists: (query) => dispatch(getArtists(query))
     makeApiFetch: (url, callback) => dispatch(makeApiFetch(url, callback))
   }
 }

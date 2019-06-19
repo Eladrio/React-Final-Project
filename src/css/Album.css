@@ -1,10 +1,10 @@
-.table-container {
+.tables-container {
   height: 79vw;
   width: 60vw;
   margin: 3vh auto;
 }
 
-table a{
+table td{
   text-decoration: none;
   color: #1ED762;
 }

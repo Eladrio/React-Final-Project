@@ -12,6 +12,8 @@ store.subscribe(throttle(() => {
   saveState({
     searchText: store.getState().searchText,
     artistsSearchResult : store.getState().artistsSearchResult,
+    artistsIds: store.getState().artistsIds,
+    artistSelectedInfo: store.getState().artistSelectedInfo,
     artistSelectedId : store.getState().artistSelectedId,
     albumsSearchResult : store.getState().albumsSearchResult,
     albumSelectedId : store.getState().albumSelectedId,

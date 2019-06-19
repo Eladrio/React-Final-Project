@@ -1,12 +1,10 @@
 import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE } from "../constants/actionTypes";
 
 export function getArtistsAction(data) {
-  console.log(data);
   let artistsIds = [];
   let artists = {};
   if(data.response.artists.items) {
     data.response.artists.items.forEach(item => {
-      console.log("ADENTRO DEL FOR EACH");
       let image;
       if (item.images.length) {
         image = item.images[0].url;
@@ -21,10 +19,8 @@ export function getArtistsAction(data) {
         name: item.name,
         genre: item.genres
       }
-      console.log(artists);
     })
   } else {
-    console.log("ADENTRO DEL ELSE DE NULL");
     artistsIds = null;
     artists = null;
   }
@@ -33,15 +29,14 @@ export function getArtistsAction(data) {
     payload: {ids: artistsIds, artistsResult: artists}
   }
 }
-/* const searchQuery = `search?q=${query}&type=artist&limit=4`;
-const url = 'https://api.spotify.com/v1/' + searchQuery; */
+
 export function makeApiFetch(url, callback) {
   return async dispatch => {
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer BQA8Qcru8BMrQVkLahzI--37hGJnDWPrHNOg4CuYaYtT4yDIG5q6SYzJzxVz9Z-wUM5fGQqYttrrgEmOFYM',
+          'Authorization': 'Bearer BQBbKqKbi-vKZZMfyGCES3jasI4ZIBIGPBDl8qIosUuqC0KO4WYnAsWiY6HIaxTRCjhlKIxbaStERAcWKcw',
         }
       });
       const responseJson = await response.json();
@@ -53,26 +48,6 @@ export function makeApiFetch(url, callback) {
   }
 
 }
-
-/* export function getArtists(query) {
-  return async dispatch => {
-    try {
-      const searchQuery = `search?q=${query}&type=artist&limit=4`;
-      const url = 'https://api.spotify.com/v1/' + searchQuery;
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer BQCiOYqMwExtQPtsp-v0G4HDMt-ukKY03ehTzaxN_6YSqvsqjq_ZP0UWlXVgvgP50HLzZh0hgEv6Mnx2gOs',
-        }
-      });
-      const responseJson = await response.json();
-      dispatch(getArtistsAction({response:responseJson}));
-    }
-    catch (Error) {
-      console.error(Error);
-    }
-  }
-} */
 
 export function selectArtist(artist) {
   return {
@@ -101,26 +76,6 @@ export function getAlbumsAction(data) {
   }
 }
 
-
-export function getAlbums(id) {
-  return async dispatch => {
-    try {
-      const url = `https://api.spotify.com/v1/artists/${id}/albums`;
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer BQA8Qcru8BMrQVkLahzI--37hGJnDWPrHNOg4CuYaYtT4yDIG5q6SYzJzxVz9Z-wUM5fGQqYttrrgEmOFYM',
-        }
-      });
-      const responseJson = await response.json();
-      dispatch(getAlbumsAction({response:responseJson}));
-    }
-    catch (ERROR) {
-      console.error(ERROR);
-    }
-  }
-}
-
 export function selectAlbum(album) {
   return {
     type: SELECT_ALBUM,
@@ -131,26 +86,7 @@ export function selectAlbum(album) {
 export function getTracksAction(data) {
   return {
     type: FETCH_TRACKS,
-    payload: data.responseJson.items,
-  }
-}
-
-
-export function getTracks(id) {
-  return async dispatch => {
-    try {
-      const url = `https://api.spotify.com/v1/albums/${id}/tracks`;
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer BQA8Qcru8BMrQVkLahzI--37hGJnDWPrHNOg4CuYaYtT4yDIG5q6SYzJzxVz9Z-wUM5fGQqYttrrgEmOFYM',
-        }
-      });
-      const responseJson = await response.json();
-      dispatch(getTracksAction({responseJson}));
-    }
-    catch (ERROR) {
-    }
+    payload: data.response.items,
   }
 }
 

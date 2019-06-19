@@ -21,7 +21,6 @@ function appReducer(state = initialState, action) {
     }
   }
   if (action.type === FETCH_ARTISTS) {
-    console.log(action.payload);
     return{
       ...state,
       artistsIds: action.payload.ids,
@@ -29,9 +28,6 @@ function appReducer(state = initialState, action) {
     };
   }
   if (action.type === SELECT_ARTIST) {
-    console.log(action.payload);
-    console.log(state.artistsSearchResult);
-    console.log(state.artistsSearchResult[action.payload]);
     return {
       ...state,
       artistSelectedId: action.payload,
