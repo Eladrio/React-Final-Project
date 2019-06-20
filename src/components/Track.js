@@ -1,8 +1,19 @@
 import React from 'react'
 
-
+/* The Track component handles the presentation of a song inside the
+   Album's table. */
 function Track(props) {
 
+  /* When the table cell containing the song's name is clicked plays
+     the audio preview of the corresponding song */
+  function onSongClick(previewUrl) {
+    let audio = new Audio();
+    audio.src = previewUrl;
+    audio.play();
+  }
+
+  /* It handles the favorites star click sending info of the corresponding
+     track to a parent component */
   function handleFavoriteClick() {
     let trackData = {
       id: props.track.id,
@@ -11,6 +22,8 @@ function Track(props) {
     }
     props.onFavoriteClick(trackData);
   }
+  /* if the song its in favorites shows the remove from tooltip's text
+     otherwise shows the add to favorites text */
   let favorite = props.favorite;
   let tooltipTitle = '';
   if (favorite) {
@@ -21,7 +34,7 @@ function Track(props) {
   }
   return(
     <tr>
-      <td className="td-name" onClick={()=>{props.onSongClick(props.track.preview_url)}}>{props.track.name}</td>
+      <td className="td-name" onClick={() => onSongClick(props.track.preview_url)}>{props.track.name}</td>
       <td className="td-fav text-right">
         <a onClick={handleFavoriteClick} data-toggle="tooltip" data-placement="right" title={tooltipTitle} >
           <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>

@@ -5,18 +5,26 @@ import SearchBarContainer from './SearchBarContainer';
 import { makeApiFetch, getArtistsAction } from '../actions/actions';
 import LogoHeader from './LogoHeader';
 import Footer from './Footer';
+import SearchHeader from './SearchHeader';
+import '../css/ArtistsList.css'
 
+/* It handles the list of artists resulting of the text inserted in the
+   search input */
 class ArtistsList extends Component {
   constructor(props) {
     super(props);
   }
 
+  /* When the component has mounted gets the data of the artists that returned
+     the search query */
   componentDidMount() {
     const searchQuery = `search?q=${this.props.searchInputText}&type=artist&limit=4`;
     const url = 'https://api.spotify.com/v1/' + searchQuery;
     this.props.makeApiFetch(url, getArtistsAction);
   }
 
+  /* When the component has updated gets the new Artists's data if the searchInput has
+     changed */
   componentDidUpdate(prevProps) {
     if (this.props.searchInputText !== prevProps.searchInputText) {
       const searchQuery = `search?q=${this.props.searchInputText}&type=artist&limit=4`;
@@ -52,8 +60,11 @@ class ArtistsList extends Component {
     }
     return(
       <div>
-        <div>
+        <div className="hide-mobile">
           <LogoHeader />
+        </div>
+        <div className="hide-desktop">
+          <SearchHeader />
         </div>
         <div className="container">
           <div className="row">
@@ -68,7 +79,7 @@ class ArtistsList extends Component {
               </nav>
             </div>
           </div>
-          <div className="row">
+          <div className="row hide-mobile">
             <SearchBarContainer />
           </div>
           <div className="row">

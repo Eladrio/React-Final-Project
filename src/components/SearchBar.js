@@ -1,12 +1,16 @@
 import React from 'react';
 import '../css/SearchBar.css'
 
+/* Manages the presentation of the SearchBar passing the input
+   to its parent component */
 function SearchBar(props) {
 
   function handleSubmit(event) {
     props.handleChange(event.target.value);
   }
 
+  /* If the key pressed when the input is focused is the Enter key
+     fires the blur event on the input that calls handleSubmit */
   function handleEnterKeyPress(e) {
     if(e.which === 13){
       e.preventDefault();
@@ -44,7 +48,3 @@ function SearchBar(props) {
 }
 
 export default SearchBar;
-{/* <form class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
-</form> */}

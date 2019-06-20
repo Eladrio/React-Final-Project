@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import Home from './Home';
-import { Redirect } from 'react-router';
 import { connect } from "react-redux";
+// import { getToken } from "../actions/actions"
 import '../css/index.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
   }
+
+/*   componentDidMount() {
+    this.props.getToken();
+  } */
 
   render() {
     return(
@@ -16,8 +20,6 @@ class App extends Component {
       </div>
     );
   }
-
-
 }
 
 const mapStateToProps = (state) => {
@@ -26,5 +28,11 @@ const mapStateToProps = (state) => {
     searchResult: state.artistsSearchResult
   }
 }
+
+/* const mapDispatchToProps = (dispatch) => {
+  return {
+    getToken: () => dispatch(getToken())
+  }
+} */
 
 export default connect(mapStateToProps, null)(App);

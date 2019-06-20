@@ -4,6 +4,7 @@ import { SUBMIT_INPUT } from '../constants/actionTypes';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router';
 
+/* Handles the logic of the Search Bar */
 class SearchBarContainer extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,8 @@ class SearchBarContainer extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
+  /* Submits the new input desencadenating the dispatch of the SUBMIT_INPUT
+     action. And redirects to the Artists List */
   handleInput(input) {
     if (input) {
       this.props.submitInput(input);

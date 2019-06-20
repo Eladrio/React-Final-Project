@@ -3,6 +3,7 @@ import SearchBarContainer from './SearchBarContainer';
 import { Link } from 'react-router-dom'
 import '../css/SearchHeader.css';
 
+/* Displays the Header with a logo and a searchbar */
 function SearchHeader(props) {
   return (
     <div className="header-container">

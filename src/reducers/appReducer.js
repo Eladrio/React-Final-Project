@@ -1,6 +1,7 @@
-import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, SUBMIT_INPUT } from "../constants/actionTypes";
+import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, SUBMIT_INPUT, GET_TOKEN } from "../constants/actionTypes";
 
 const initialState = {
+  token: "",
   searchText : '',
   artistsSearchResult : null,
   artistsIds: [],
@@ -10,10 +11,18 @@ const initialState = {
   albumSelectedId : null,
   selectedAlbumTracks: null,
   favoriteTracksIds: [],
-  favoriteTracks: null
+  favoriteTracks: null,
 };
 
 function appReducer(state = initialState, action) {
+  console.log(action.payload);
+  if (action.type === GET_TOKEN) {
+    return {
+      ...state,
+      token: action.payload.access_token
+    }
+  }
+
   if (action.type === SUBMIT_INPUT) {
     return {
       ...state,

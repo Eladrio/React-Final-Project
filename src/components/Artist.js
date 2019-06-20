@@ -4,7 +4,9 @@ import SearchHeader from './SearchHeader';
 import Footer from './Footer';
 import '../css/Artist.css'
 
+/* It handles the presentational side of the selected Artist */
 function Artist(props) {
+  /* this returns an array of Albums */
   let albums = [];
   albums = props.albums.map((item,i) => {
     let alt = `Image of ${item.name}`
@@ -26,7 +28,7 @@ function Artist(props) {
       </div>
     );
   });
-
+  /* Displays the list of albums from the artist and all the presentational side of the Artist. */
   return(
     <div>
       <SearchHeader />

@@ -4,15 +4,21 @@ import { makeApiFetch, getAlbumsAction } from '../actions/actions'
 import { SELECT_ARTIST } from '../constants/actionTypes';
 import Artist from './Artist';
 
+/* This component manages the logic of the selected Artist and pass the
+   necessary data to the Artist's component that handles the presentation
+   of an artist */
 class ArtistContainer extends Component {
   constructor(props) {
     super(props);
   }
 
+  /* When the component has mounted sets the artistId in the store */
   componentDidMount() {
       this.props.selectArtist(this.props.location.state.artistId);
   }
 
+  /* When the component has been updated if the new id is different to
+     the previous one then gets the new artist data */
   componentDidUpdate(prevProps) {
     if (this.props.artistId !== prevProps.artistId) {
       const url = `https://api.spotify.com/v1/artists/${this.props.artistId}/albums`;

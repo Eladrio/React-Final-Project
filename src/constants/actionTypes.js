@@ -6,3 +6,4 @@ export const FETCH_TRACKS = "FETCH_TRACKS";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const SUBMIT_INPUT = "SUBMIT_INPUT";
+export const GET_TOKEN = "GET_TOKEN";

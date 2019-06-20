@@ -2,6 +2,8 @@ import React from 'react';
 import Track from './Track';
 import '../css/Album.css'
 
+/* It manages the presentation of Albums, creates an array of Track components and inserts it
+   inside of an array of tables, each one of them corresponding with a disc number */
 function Album(props) {
   let tables = props.tracks.map((cd,i) => {
     let tracksList = cd.map((item, i) => {

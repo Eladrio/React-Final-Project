@@ -1,10 +1,8 @@
 import React from 'react';
 
+/* Handles the presentation of the favorites list */
 function FavoritesList(props) {
-  console.log(props);
   let tracks = props.props.favoritesId.map((item,i) => {
-    console.log(item);
-    console.log(props.props.favorites[item]);
     let favItem = props.props.favorites[item];
     return (
       <div className="col-sm-6 " key={i}>
@@ -15,8 +13,8 @@ function FavoritesList(props) {
             </div>
             <div className="col-8">
               <h4>{favItem.name}</h4>
-              <h5>Artist: {favItem.artist}</h5>
-              <h5>Album: {favItem.albumName}</h5>
+              <p className="hide-mobile">Artist: {favItem.artist}</p>
+              <p className="hide-mobile">Album: {favItem.albumName}</p>
             </div>
           </div>
         </div>

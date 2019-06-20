@@ -7,20 +7,22 @@ import SearchHeader from './SearchHeader';
 import Footer from './Footer';
 import Album from './Album';
 
+/* This component manages the logic of the selected artist's albums and pass props to
+   the Album component to manage the view of the albums  */
 class AlbumContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      audio: new Audio(),
-    }
     this.handleFavorite = this.handleFavorite.bind(this);
-    this.handleAudio = this.handleAudio.bind(this);
   }
 
+  /* When the component finished mounting it sets the selectedAlbumId in the store
+     to the id of selected Album. */
   componentDidMount() {
     this.props.selectAlbum(this.props.location.state.albumId);
   }
 
+  /* When the component did update checks if the current album's id is different than
+     the previous album's id and if so fetchs the new album's data. */
   componentDidUpdate(prevProps) {
     if (this.props.album !== prevProps.album) {
       const url = `https://api.spotify.com/v1/albums/${this.props.album}/tracks`;
@@ -28,6 +30,8 @@ class AlbumContainer extends Component {
     }
   }
 
+  /* Receives info of a song and if it is already in favorites then removes it otherwise
+     adds the song to the favorites songs */
   handleFavorite(trackData) {
     if (this.props.favorites.includes(trackData.id)) {
       this.props.removeFavorite(trackData.id);
@@ -46,21 +50,8 @@ class AlbumContainer extends Component {
     }
   }
 
-  handleAudio(previewUrl) {
-    if (previewUrl) {
-      if (this.state.audio.src !== previewUrl) {
-        this.state.audio.pause();
-      }
-      if (this.state.audio.paused) {
-        this.state.audio.src = previewUrl;
-        this.state.audio.load();
-        this.state.audio.play();
-      } else {
-        this.state.audio.pause();
-      }
-    }
-  }
-
+  /* Receives the tracks of the Album and creates an array of arrays that separates them
+     by disc number */
   separateByDiscNumber(tracks){
     let discCounter = 1;
     let separatedDiscs = [];
@@ -108,7 +99,7 @@ class AlbumContainer extends Component {
               <li className="breadcrumb-item active" aria-current="page"><span>{this.props.location.state.albumName}</span></li>
             </ol>
           </nav>
-          {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} handleAudio={this.handleAudio} favorites={this.props.favorites} /> : null}
+          {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} favorites={this.props.favorites} /> : null}
         </div>
         <Footer />
       </div>
