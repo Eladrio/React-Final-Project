@@ -79,7 +79,7 @@ class AlbumContainer extends Component {
     return (
        <div>
         <SearchHeader />
-        <div className="container">
+        <div className="container album-container">
           <div className="card shadow p-3 mb-5 bg-white rounded" >
             <div className="row">
               <div className="col">

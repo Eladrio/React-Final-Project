@@ -15,7 +15,6 @@ const initialState = {
 };
 
 function appReducer(state = initialState, action) {
-  console.log(action.payload);
   if (action.type === GET_TOKEN) {
     return {
       ...state,
