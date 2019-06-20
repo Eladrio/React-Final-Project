@@ -45,7 +45,7 @@ class ArtistsList extends Component {
               <div className="card shadow p-3 mb-5 bg-white rounded" >
               <Link to={{pathname: '/artist', state: { artistId: artist.id}}}>
                 <div className="row">
-                  <div className="col">
+                  <div className="col img-col">
                     <img src={artist.img} className="img-fluid" alt={alt}/>
                   </div>
                   <div className="col-8">

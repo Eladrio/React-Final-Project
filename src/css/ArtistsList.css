@@ -1,3 +1,9 @@
+.img-col {
+  width: 100%;
+  min-height: 15vw;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .hide-mobile {
     display: none;

@@ -23,6 +23,7 @@ function FavoritesList(props) {
   });
   return (
     <div className="container">
+      <h2>Favorites</h2>
       <div className="row">
         {tracks}
       </div>
