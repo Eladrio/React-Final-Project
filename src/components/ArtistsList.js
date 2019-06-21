@@ -42,11 +42,11 @@ class ArtistsList extends Component {
         let alt = `Image of ${artist.name}`
         return(
           <div className="col-sm-6 " key={i}>
-              <div className="card shadow p-3 mb-5 bg-white rounded" >
+              <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
               <Link to={{pathname: '/artist', state: { artistId: artist.id}}}>
                 <div className="row">
                   <div className="col img-col">
-                    <img src={artist.img} className="img-fluid" alt={alt}/>
+                    <img src={artist.img} className="card-img h-75" alt={alt}/>
                   </div>
                   <div className="col-8">
                     <h4>{artist.name}</h4>

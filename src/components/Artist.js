@@ -12,11 +12,11 @@ function Artist(props) {
     let alt = `Image of ${item.name}`
     return(
       <div className="col-sm-6 " key={i}>
-        <div className="card shadow p-3 mb-5 bg-white rounded" >
+        <div className="card shadow p-3 mb-5 bg-white rounded h-75" >
           <Link to={{pathname: '/album', state: { albumId: item.id, albumImg: item.img, albumName: item.name, albumRelease: item.release }}}>
             <div className="row">
               <div className="col">
-                <img className="card-img img-fluid" src={item.img.url} alt={item.name}></img>
+                <img className="card-img h-75" src={item.img.url} alt={item.name}></img>
               </div>
               <div className="col-8">
                 <h4>{item.name}</h4>

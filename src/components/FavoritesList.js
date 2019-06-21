@@ -5,11 +5,11 @@ function FavoritesList(props) {
   let tracks = props.props.favoritesId.map((item,i) => {
     let favItem = props.props.favorites[item];
     return (
-      <div className="col-sm-6 " key={i}>
-        <div className="card shadow p-3 mb-5 bg-white rounded" >
+      <div className="col-sm-6 col-md-6   " key={i}>
+        <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
           <div className="row">
             <div className="col">
-              <img className="card-img" src={favItem.albumImg.url} alt="Card image cap" />
+              <img className="card-img h-75" src={favItem.albumImg.url} alt="Card image cap" />
             </div>
             <div className="col-8">
               <h4>{favItem.name}</h4>
