@@ -1,66 +1,59 @@
 import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, GET_TOKEN } from "../constants/actionTypes";
 
-/* function getTokenAction(response) {
+function getTokenAction(response) {
   console.log(response);
   return {
     type: GET_TOKEN,
     payload: response.response
   }
-} */
-/* dispatch(getTokenAction({response:responseJson}));
-var data = "grant_type=client_credentials&client_id=ff43d276be5d403f8211fe6322dff4f1&client_secret=bf7abbf4d3864923bb0be8383c8d8cbb";
-
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === 4) {
-    console.log(this.responseText);
+}
+axios({
+  url: 'https://accounts.spotify.com/api/token',
+  method: 'post',
+  params: {
+    grant_type: 'client_credentials'
+  },
+  headers: {
+    'Accept':'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  auth: {
+    username: 'YOUR-CLIENT-ID',
+    password: 'YOUR-CLIENT-SECRET'
   }
+}).then(function(response) {
+    console.log(response);
+}).catch(function(error) {
 });
-
-xhr.open("POST", "https://accounts.spotify.com/api/token");
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-xhr.setRequestHeader("User-Agent", "PostmanRuntime/7.15.0");
-xhr.setRequestHeader("Accept", "");
-
-
-/* xhr.setRequestHeader("Cache-Control", "no-cache");
-xhr.setRequestHeader("Postman-Token", "9dd7283e-2d59-4553-a97d-23ae429e65d4,87731ee6-e7d4-43e4-9507-d367e6df159d");
-xhr.setRequestHeader("Host", "accounts.spotify.com");
-xhr.setRequestHeader("accept-encoding", "gzip, deflate");
-xhr.setRequestHeader("content-length", "119");
-xhr.setRequestHeader("Connection", "keep-alive");
-xhr.setRequestHeader("cache-control", "no-cache");
-
-xhr.send(data);
-
 export function getToken() {
-  var data = "grant_type=client_credentials&client_id=ff43d276be5d403f8211fe6322dff4f1&client_secret=bf7abbf4d3864923bb0be8383c8d8cbb";
-
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
+  let data = {
+    "grant_type": "client_credentials",
+    "client_id": "ff43d276be5d403f8211fe6322dff4f1",
+    "client_secret": "bf7abbf4d3864923bb0be8383c8d8cbb"
+  };
+  let encodedData = btoa(data);
+  console.log(encodedData);
+  return async dispatch => {
+    try{
+     let r = await fetch('https://accounts.spotify.com/api/token',
+       {
+         "method": "POST",
+         "headers": {
+           "Content-Type": "application/x-www-form-urlencoded",
+           "Authorization": "Basic "+ encodedData
+          }
+       });
+     console.log(r);
+     dispatch(getTokenAction({response:r}));
     }
-  });
+    catch(e){
+      console.log(e);
+    }
 
-  xhr.open("POST", "https://accounts.spotify.com/api/token");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.setRequestHeader("User-Agent", "PostmanRuntime/7.15.0");
-  xhr.setRequest
-/*   xhr.setRequestHeader("Cache-Control", "no-cache");
-  xhr.setRequestHeader("Postman-Token", "9dd7283e-2d59-4553-a97d-23ae429e65d4,87731ee6-e7d4-43e4-9507-d367e6df159d");
-  xhr.setRequestHeader("Host", "accounts.spotify.com");
-  xhr.setRequestHeader("accept-encoding", "gzip, deflate");
-  xhr.setRequestHeader("content-length", "119");
-  xhr.setRequestHeader("Connection", "keep-alive");
-  xhr.setRequestHeader("cache-control", "no-cache");
+  }
 
-  xhr.send(data);
-} */
+}
+
 export function getArtistsAction(data) {
   let artistsIds = [];
   let artists = {};
@@ -97,7 +90,7 @@ export function makeApiFetch(url, callback) {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer BQAyeSGutuQ9fwvdJAdTzPm1iub01SPBkl4TWHGE9ejKpQYBqZMP13b5ckxPQbuw6IEFu9A3OxMcdTdU1gE',
+          'Authorization': 'Bearer BQDvkIIBdfqoASDHQrhP6hWSvt-rcxUSxKyZbR4pUTnlWvjFS32WV8QliMFZ0IS2xaKnmZBACKq2F-uAzC0',
         }
       });
       const responseJson = await response.json();

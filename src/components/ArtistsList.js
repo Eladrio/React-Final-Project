@@ -71,6 +71,9 @@ class ArtistsList extends Component {
             <div className="container">
               <h4> Artists </h4>
               <p> you are currently searching: "{this.props.searchInputText}"</p>
+              <div className="row hide-mobile">
+                <SearchBarContainer />
+              </div>
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
@@ -79,10 +82,7 @@ class ArtistsList extends Component {
               </nav>
             </div>
           </div>
-          <div className="row hide-mobile">
-            <SearchBarContainer />
-          </div>
-          <div className="row">
+          <div className="row artists-row">
             {selection}
           </div>
         </div>

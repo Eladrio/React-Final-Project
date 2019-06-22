@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Home from './Home';
 import { connect } from "react-redux";
-// import { getToken } from "../actions/actions"
+import { getToken } from "../actions/actions"
 import '../css/index.css';
 
 class App extends Component {
@@ -9,9 +9,9 @@ class App extends Component {
     super(props);
   }
 
-/*   componentDidMount() {
+  componentDidMount() {
     this.props.getToken();
-  } */
+  }
 
   render() {
     return(
@@ -29,10 +29,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-/* const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getToken: () => dispatch(getToken())
   }
-} */
+}
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

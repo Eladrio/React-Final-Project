@@ -33,10 +33,10 @@ function Artist(props) {
     <div>
       <SearchHeader />
       <div className="container">
-        <div className="card shadow p-3 mb-5 bg-white rounded" >
+        <div className="card shadow p-3 mb-5 bg-white rounded h-30" >
           <div className="row">
             <div className="col">
-              <img className="card-img img-fluid" src={props.artist.img} alt={props.artist.name} />
+              <img className="card-img h-75" src={props.artist.img} alt={props.artist.name} />
             </div>
             <div className="col-8">
               <h3>{props.artist.name}</h3>

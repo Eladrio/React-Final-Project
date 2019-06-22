@@ -5,7 +5,7 @@ function FavoritesList(props) {
   let tracks = props.props.favoritesId.map((item,i) => {
     let favItem = props.props.favorites[item];
     return (
-      <div className="col-sm-6 col-md-6   " key={i}>
+      <div className="col-sm-6" key={i}>
         <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
           <div className="row">
             <div className="col">

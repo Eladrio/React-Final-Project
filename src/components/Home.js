@@ -18,18 +18,18 @@ class Home extends Component {
         <div>
           <LogoHeader />
         </div>
-        <div className='main-container container'>
-          <div className='intro-text-container col-sm-8'>
+        <div className="main-container container">
+          <div className="intro-text-container col-md-8">
             <h2>Welcome to</h2>
             <h1>Spotisearch</h1>
             <h3>Search your favourite songs over Spotify, just enter
             an artist's name in the following search box and enjoy!</h3>
+            <div className="searchbar-container">
             <SearchBarContainer />
+            </div>
           </div>
-          <div>
           {/* If the favoritesId array lenght is greater than zero then renders the favorite's list */}
             {this.props.favoritesId.length ? <FavoritesList props={{favorites: this.props.favorites, favoritesId: this.props.favoritesId}} />: null}
-          </div>
         </div>
         <Footer />
       </div>
