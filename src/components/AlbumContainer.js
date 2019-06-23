@@ -69,6 +69,7 @@ class AlbumContainer extends Component {
   render() {
     let tracks;
     let tracksByDisc;
+    console.log(this.props);
     if (this.props.tracks) {
       tracks = this.props.tracks;
       tracksByDisc = this.separateByDiscNumber(tracks);
@@ -76,30 +77,36 @@ class AlbumContainer extends Component {
     else {
       tracks = null;
     }
+    console.log(this.props.location.state);
     return (
-       <div>
+       <div className="page-container">
         <SearchHeader />
-        <div className="container album-container">
-          <div className="card shadow p-3 mb-5 bg-white rounded" >
-            <div className="row">
-              <div className="col">
-                <img className="card-img img-fluid" src={this.props.location.state.albumImg.url} alt={this.props.location.state.albumName} />
-              </div>
-              <div className="col-8">
-                <h3>{this.props.location.state.albumName}</h3>
-                <h3>{this.props.artistInfo.name} - {this.props.location.state.albumRelease}</h3>
+        <div className="content-wrap">
+          <div className="container album-container">
+            <div className="card artist-card p-3 mb-5 rounded border-0" >
+              <div className="row">
+                <div className="col">
+                  <img className="card-img img-fluid" src={this.props.location.state.albumImg} alt={this.props.location.state.albumName} />
+                </div>
+                <div className="col-8">
+                  <h3>{this.props.location.state.albumName}</h3>
+                  <h3>{this.props.artistInfo.name} - {this.props.location.state.albumRelease}</h3>
+                </div>
               </div>
             </div>
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
+                <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
+                <li className="breadcrumb-item"><Link to={{pathname: '/artist', state: { artistId: this.props.artist }}}><span>Artist</span></Link></li>
+                <li className="breadcrumb-item active" aria-current="page"><span>{this.props.location.state.albumName}</span></li>
+              </ol>
+            </nav>
           </div>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
-              <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
-              <li className="breadcrumb-item"><Link to={{pathname: '/artist', state: { artistId: this.props.artist }}}><span>Artist</span></Link></li>
-              <li className="breadcrumb-item active" aria-current="page"><span>{this.props.location.state.albumName}</span></li>
-            </ol>
-          </nav>
-          {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} favorites={this.props.favorites} /> : null}
+            <div className="line-separator my-5"></div>
+            <div className="container">
+              {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} favorites={this.props.favorites} /> : null}
+            </div>
         </div>
         <Footer />
       </div>

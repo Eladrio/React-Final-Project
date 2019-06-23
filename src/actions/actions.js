@@ -7,24 +7,7 @@ function getTokenAction(response) {
     payload: response.response
   }
 }
-axios({
-  url: 'https://accounts.spotify.com/api/token',
-  method: 'post',
-  params: {
-    grant_type: 'client_credentials'
-  },
-  headers: {
-    'Accept':'application/json',
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  auth: {
-    username: 'YOUR-CLIENT-ID',
-    password: 'YOUR-CLIENT-SECRET'
-  }
-}).then(function(response) {
-    console.log(response);
-}).catch(function(error) {
-});
+
 export function getToken() {
   let data = {
     "grant_type": "client_credentials",
@@ -90,7 +73,7 @@ export function makeApiFetch(url, callback) {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer BQDvkIIBdfqoASDHQrhP6hWSvt-rcxUSxKyZbR4pUTnlWvjFS32WV8QliMFZ0IS2xaKnmZBACKq2F-uAzC0',
+          'Authorization': 'Bearer BQAM6yyaD-8Mwp7OSgRQ8wXib8NysHhVjb8_DtmJMwANZGDmm6t4oQ6tLhiae2hvBHK1OOFzed81QEBDn24',
         }
       });
       const responseJson = await response.json();
@@ -113,10 +96,11 @@ export function getAlbumsAction(data) {
   let result = data.response.items.filter((item) => {
     return (item.available_markets.includes("AR"));
   }).map((item) => {
+    let image = item.images.length ? image = item.images[0].url : image = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png";
     return {
       name: item.name,
       id: item.id,
-      img: item.images[0],
+      img: image,
       release: item.release_date.split('-')[0]
     }
   });

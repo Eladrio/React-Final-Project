@@ -1,3 +1,7 @@
+.container.album-container {
+  background-color: white;
+}
+
 .tables-container {
   min-height: 79vw;
   width: 60vw;
@@ -7,8 +11,4 @@
 table td{
   text-decoration: none;
   color: #1ED762;
-}
-
-.album-container {
-  min-height: 100vh;
 }

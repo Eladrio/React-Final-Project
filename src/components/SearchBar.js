@@ -21,20 +21,42 @@ function SearchBar(props) {
 
   const filterText = props.filterText;
   return (
-    <div className="card-body">
+    <form className="card p-2 border-0" id="search-card">
+      <div class="mb-3">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button className="btn" type="button">
+              <i className="fa fa-search"></i>
+            </button>
+          </div>
+          <input
+            type="search"
+            id="search-input"
+            className="form-control input-lg py-2 border mr-sm-2"
+            placeholder="Search..."
+            value={filterText}
+            onBlur={handleSubmit}
+            onKeyPress={handleEnterKeyPress}
+          />
+        </div>
+      </div>
+    </form>
+  )
+}
+{/*     <div className="card-body">
       <form className="form-inline my-2 my-lg-0">
         <div className="row">
-          <div className="col-auto">
+          <div className="col">
             <span className="input-group-append">
-              <button className="btn btn-outline-secondary border-left-0 border" type="button">
+              <button className="btn btn-outline-secondary btn-primary border-left-0 border" type="button">
                 <i className="fa fa-search"></i>
               </button>
             </span>
           </div>
-          <div className="col">
+          <div className="col-10">
             <input
               type="search"
-              className="form-control py-2 border-right-0 border mr-sm-2"
+              className="form-control py-2 rounded-40 border mr-sm-2"
               placeholder="Search..."
               value={filterText}
               onBlur={handleSubmit}
@@ -43,8 +65,5 @@ function SearchBar(props) {
           </div>
         </div>
     </form>
-  </div>
-  );
-}
-
+  </div> */}
 export default SearchBar;

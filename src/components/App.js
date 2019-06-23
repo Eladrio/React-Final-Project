@@ -9,10 +9,10 @@ class App extends Component {
     super(props);
   }
 
-  componentDidMount() {
+/*   componentDidMount() {
     this.props.getToken();
   }
-
+ */
   render() {
     return(
       <div id='main-div' className="container-fluid">

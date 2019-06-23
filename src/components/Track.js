@@ -24,24 +24,25 @@ function Track(props) {
   }
   /* if the song its in favorites shows the remove from tooltip's text
      otherwise shows the add to favorites text */
-  let favorite = props.favorite;
-  let tooltipTitle = '';
-  if (favorite) {
-    tooltipTitle = "Remove from favorites";
-  }
-  else {
-    tooltipTitle = "Add to favorites";
-  }
-  return(
-    <tr>
-      <td className="td-name" onClick={() => onSongClick(props.track.preview_url)}>{props.track.name}</td>
-      <td className="td-fav text-right">
-        <a onClick={handleFavoriteClick} data-toggle="tooltip" data-placement="right" title={tooltipTitle} >
-          <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>
-        </a>
-      </td>
-    </tr>
-  )
+     let favorite = props.favorite;
+     console.log(props.favorite);
+     let tooltipTitle = '';
+     if (favorite) {
+       tooltipTitle = "Remove from favorites";
+     }
+     else {
+       tooltipTitle = "Add to favorites";
+     }
+     return(
+       <tr>
+         <td className="td-name" onClick={() => this.onSongClick(props.track.preview_url)}>{props.track.name}</td>
+         <td className="td-fav text-right">
+           <a onClick={handleFavoriteClick} data-toggle="tooltip" data-placement="right" data-original-title={tooltipTitle}>
+             <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>
+           </a>
+         </td>
+       </tr>
+     )
 }
 
 export default Track;

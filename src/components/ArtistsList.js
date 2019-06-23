@@ -59,32 +59,37 @@ class ArtistsList extends Component {
       });
     }
     return(
-      <div>
+      <div className="page-container">
         <div className="hide-mobile">
           <LogoHeader />
         </div>
         <div className="hide-desktop">
           <SearchHeader />
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="container">
-              <h4> Artists </h4>
-              <p> you are currently searching: "{this.props.searchInputText}"</p>
-              <div className="row hide-mobile">
-                <SearchBarContainer />
+        <div className="content-wrap">
+          <div className="container">
+            <div className="row">
+              <div className="container">
+                <h4> Artists </h4>
+                <p> You are currently searching: "{this.props.searchInputText}"</p>
+                <div className="row hide-mobile">
+                  <SearchBarContainer />
+                </div>
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
+                    <li className="breadcrumb-item active" aria-current="page"><span>Artists</span></li>
+                  </ol>
+                </nav>
               </div>
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
-                  <li className="breadcrumb-item active" aria-current="page"><span>Artists</span></li>
-                </ol>
-              </nav>
             </div>
           </div>
-          <div className="row artists-row">
-            {selection}
-          </div>
+          <div className="line-separator my-5"></div>
+            <div className="container">
+              <div className="row artists-row">
+                {selection}
+              </div>
+            </div>
         </div>
         <Footer />
       </div>

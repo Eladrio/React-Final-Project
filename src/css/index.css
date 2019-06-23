@@ -6,7 +6,21 @@ body {
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.line-separator {
+  border-top: 3px solid black;
+}
+
+.breadcrumb {
+  background: rgba(245, 245, 245, 0);
+  border: 0px solid rgba(245, 245, 245, 0);
+}
+
+.breadcrumb li {
+  padding: 0;
+  margin: 0;
 }
 
 ul {
@@ -35,3 +49,11 @@ ol a{
   }
 }
 
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}

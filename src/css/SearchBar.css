@@ -3,6 +3,14 @@
   padding-right: 0;
 }
 
+#search-input {
+  border-radius: 50px;
+}
+
 .col, .col-auto {
   padding: 0;
+}
+
+#search-card {
+  background-color: transparent !important;
 }

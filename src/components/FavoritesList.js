@@ -9,7 +9,7 @@ function FavoritesList(props) {
         <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
           <div className="row">
             <div className="col">
-              <img className="card-img h-75" src={favItem.albumImg.url} alt="Card image cap" />
+              <img className="card-img h-75" src={favItem.albumImg} alt="Card image cap" />
             </div>
             <div className="col-8">
               <h4>{favItem.name}</h4>
@@ -22,7 +22,7 @@ function FavoritesList(props) {
     )
   });
   return (
-    <div className="container">
+    <div className="favorites-container">
       <h2>Favorites</h2>
       <div className="row">
         {tracks}
