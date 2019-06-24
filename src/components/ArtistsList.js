@@ -73,7 +73,9 @@ class ArtistsList extends Component {
                 <h4> Artists </h4>
                 <p> You are currently searching: "{this.props.searchInputText}"</p>
                 <div className="row hide-mobile">
-                  <SearchBarContainer />
+                  <div className="searchbar-container col-md-8">
+                    <SearchBarContainer placeholderText="Search for your favorite artist here" />
+                  </div>
                 </div>
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">

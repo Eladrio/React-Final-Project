@@ -43,10 +43,13 @@ ol a{
   color: #1ED760 !important;
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
+.fas {
+  color: #1ED760;
+}
+
+.container.description-container {
+  background-color: white;
+  height: 30vh;
 }
 
 .page-container {
@@ -56,4 +59,10 @@ ol a{
 
 .content-wrap {
   padding-bottom: 2.5rem;    /* Footer height */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
 }

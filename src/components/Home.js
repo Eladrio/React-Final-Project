@@ -36,7 +36,7 @@ class Home extends Component {
             </div>
             <div className="row">
               <div className="searchbar-container col-md-8">
-                <SearchBarContainer />
+                <SearchBarContainer placeholderText="Type the name of your favorite artist" />
               </div>
             </div>
           </div>

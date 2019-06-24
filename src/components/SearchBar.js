@@ -22,9 +22,9 @@ function SearchBar(props) {
   const filterText = props.filterText;
   return (
     <form className="card p-2 border-0" id="search-card">
-      <div class="mb-3">
-        <div class="input-group">
-          <div class="input-group-prepend">
+      <div className="mb-3">
+        <div className="input-group">
+          <div className="input-group-prepend">
             <button className="btn" type="button">
               <i className="fa fa-search"></i>
             </button>
@@ -33,7 +33,7 @@ function SearchBar(props) {
             type="search"
             id="search-input"
             className="form-control input-lg py-2 border mr-sm-2"
-            placeholder="Search..."
+            placeholder={props.placeholderText}
             value={filterText}
             onBlur={handleSubmit}
             onKeyPress={handleEnterKeyPress}

@@ -2,17 +2,6 @@
   background-color: white;
 }
 
-.artist-card {
-  max-height: 30vh;
-}
-.row {
-  max-height: 100%;
-}
-
-.col {
-  max-height: 100%;
-}
-
 .card-img {
   max-height: 100%;
   max-width: 100%;

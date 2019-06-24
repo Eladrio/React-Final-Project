@@ -32,10 +32,10 @@ class SearchBarContainer extends Component {
     if (this.state.redirect) {
       toRender = <div>
                   <Redirect push to='/artists' />
-                  <SearchBar handleChange={this.handleInput} />
+                  <SearchBar handleChange={this.handleInput} placeholderText={this.props.placeholderText} />
                 </div>
     } else {
-      toRender = <SearchBar  handleChange={this.handleInput} />
+      toRender = <SearchBar  handleChange={this.handleInput} placeholderText={this.props.placeholderText} />
     }
     return (
       toRender

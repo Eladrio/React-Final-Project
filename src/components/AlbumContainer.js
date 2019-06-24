@@ -69,7 +69,6 @@ class AlbumContainer extends Component {
   render() {
     let tracks;
     let tracksByDisc;
-    console.log(this.props);
     if (this.props.tracks) {
       tracks = this.props.tracks;
       tracksByDisc = this.separateByDiscNumber(tracks);
@@ -77,21 +76,18 @@ class AlbumContainer extends Component {
     else {
       tracks = null;
     }
-    console.log(this.props.location.state);
     return (
        <div className="page-container">
         <SearchHeader />
         <div className="content-wrap">
-          <div className="container album-container">
-            <div className="card artist-card p-3 mb-5 rounded border-0" >
-              <div className="row">
-                <div className="col">
-                  <img className="card-img img-fluid" src={this.props.location.state.albumImg} alt={this.props.location.state.albumName} />
-                </div>
-                <div className="col-8">
-                  <h3>{this.props.location.state.albumName}</h3>
-                  <h3>{this.props.artistInfo.name} - {this.props.location.state.albumRelease}</h3>
-                </div>
+          <div className="container description-container">
+            <div className="row align-items-center h-100">
+              <div className="col h-75">
+                  <img className="h-100 w-100" src={this.props.location.state.albumImg} alt={this.props.location.state.albumName} sizes="(max-width: 660px) 100vw, 660px" />
+              </div>
+              <div className="col-8">
+                <h3>{this.props.location.state.albumName}</h3>
+                <h3>{this.props.artistInfo.name} - {this.props.location.state.albumRelease}</h3>
               </div>
             </div>
             <nav aria-label="breadcrumb">
@@ -103,13 +99,13 @@ class AlbumContainer extends Component {
               </ol>
             </nav>
           </div>
-            <div className="line-separator my-5"></div>
-            <div className="container">
-              {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} favorites={this.props.favorites} /> : null}
-            </div>
-        </div>
-        <Footer />
+          <div className="line-separator my-5"></div>
+          <div className="container">
+            {tracks !== null ? <Album tracks={tracksByDisc} handleFavorite={this.handleFavorite} favorites={this.props.favorites} /> : null}
+          </div>
       </div>
+      <Footer />
+    </div>
     )
   }
 
