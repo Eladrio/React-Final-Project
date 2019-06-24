@@ -36,12 +36,13 @@ class ArtistsList extends Component {
 
   render() {
     let selection;
+    let rows = [];
     if (this.props.artistsIds) {
       selection= this.props.artistsIds.map((item,i) => {
         let artist = this.props.artistsSearchResult[item];
         let alt = `Image of ${artist.name}`
         return(
-          <div className="col-sm-6 " key={i}>
+          <div className="col-sm-6 h-100" key={i}>
               <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
               <Link to={{pathname: '/artist', state: { artistId: artist.id}}}>
                 <div className="row">
@@ -57,6 +58,15 @@ class ArtistsList extends Component {
           </div>
         );
       });
+      for (let i = 0; i < selection.length; i = i + 2) {
+        let currentElement = selection[i];
+        let nextElement = selection[i + 1];
+        let row = <div className="row" key={i}>
+            {currentElement}
+            {nextElement}
+          </div>;
+        rows.push(row);
+      }
     }
     return(
       <div className="page-container">
@@ -88,8 +98,10 @@ class ArtistsList extends Component {
           </div>
           <div className="line-separator my-5"></div>
             <div className="container">
-              <div className="row artists-row">
-                {selection}
+              <div className="row justify-content-center">
+                <div className="col-sm-8">
+                  {rows}
+                </div>
               </div>
             </div>
         </div>

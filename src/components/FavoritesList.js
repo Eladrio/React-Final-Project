@@ -21,11 +21,27 @@ function FavoritesList(props) {
       </div>
     )
   });
+  let rows = [];
+  for (let i = 0; i < tracks.length; i = i + 2) {
+    let currentElement = tracks[i];
+    let nextElement = tracks[i + 1];
+    let row = <div className="row" key={i}>
+        {currentElement}
+        {nextElement}
+      </div>;
+    rows.push(row);
+  }
   return (
     <div className="favorites-container">
-      <h2>Favorites</h2>
-      <div className="row">
-        {tracks}
+      <div className="row justify-content-center">
+        <div className="col-sm-8">
+          <h2>Favorites</h2>
+        </div>
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-sm-8">
+          {rows}
+        </div>
       </div>
     </div>
   )

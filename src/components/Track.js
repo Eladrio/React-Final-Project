@@ -1,4 +1,5 @@
 import React from 'react'
+import Tooltip from 'react-tooltip-lite';
 
 /* The Track component handles the presentation of a song inside the
    Album's table. */
@@ -35,11 +36,13 @@ function Track(props) {
      }
      return(
        <tr>
-         <td className="td-name" onClick={() => this.onSongClick(props.track.preview_url)}>{props.track.name}</td>
+         <td className="td-name" onClick={() => onSongClick(props.track.preview_url)}>{props.track.name}</td>
          <td className="td-fav text-right">
-           <a onClick={handleFavoriteClick} data-toggle="tooltip" data-placement="right" data-original-title={tooltipTitle}>
-             <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>
-           </a>
+          <Tooltip content={tooltipTitle} direction="right" useDefaultStyles forceDirection>
+            <a onClick={handleFavoriteClick}>
+              <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>
+            </a>
+          </Tooltip>
          </td>
        </tr>
      )

@@ -11,7 +11,7 @@ function Artist(props) {
   albums = props.albums.map((item,i) => {
     let alt = `Image of ${item.name}`;
     return(
-      <div className="col-sm-6 " key={i}>
+      <div className="col-sm-6 h-100" key={i}>
         <div className="card shadow p-3 mb-5 rounded h-40" >
           <Link to={{pathname: '/album', state: { albumId: item.id, albumImg: item.img, albumName: item.name, albumRelease: item.release }}}>
             <div className="row">
@@ -19,8 +19,8 @@ function Artist(props) {
                 <img className="card-img h-75" src={item.img} alt={item.name}></img>
               </div>
               <div className="col-8">
-                <h4>{item.name}</h4>
-                <h4>{item.release}</h4>
+                <h5>{item.name}</h5>
+                <h5>{item.release}</h5>
               </div>
             </div>
           </Link>
@@ -28,15 +28,24 @@ function Artist(props) {
       </div>
     );
   });
+  let rows = [];
+  for (let i = 0; i < albums.length; i = i + 2) {
+    let currentElement = albums[i];
+    let nextElement = albums[i + 1];
+    let row = <div className="row" key={i}>
+        {currentElement}
+        {nextElement}
+      </div>;
+    rows.push(row);
+  }
   /* Displays the list of albums from the artist and all the presentational side of the Artist. */
   return(
     <div className="page-container">
       <SearchHeader />
       <div className="content-wrap">
-        <div className="container artist-description">
         <div className="container description-container">
             <div className="row align-items-center h-100">
-              <div className="col-3 h-75">
+              <div className="col h-75">
                   <img className="h-100 w-100" src={props.artist.img} alt={props.artist.name} />
               </div>
               <div className="col-8">
@@ -52,11 +61,12 @@ function Artist(props) {
               </ol>
             </nav>
           </div>
-        </div>
         <div className="line-separator my-5"></div>
         <div className="container">
-          <div className="row">
-            {albums}
+          <div className="row justify-content-center">
+            <div className="col-sm-8">
+              {rows}
+            </div>
           </div>
         </div>
       </div>

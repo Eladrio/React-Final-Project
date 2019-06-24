@@ -12,7 +12,8 @@ function Album(props) {
       );
     });
     return(
-      <div className="table-container" key={i}>
+      <div className="row justify-content-center" key={i}>
+      <div className="table-container col-8" >
         <div className="table-responsive">
           <table className="table table-striped table-hover table-dark table-sm">
             <thead className="thead-light">
@@ -26,6 +27,7 @@ function Album(props) {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     )
   })

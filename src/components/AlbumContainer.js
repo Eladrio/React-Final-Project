@@ -24,7 +24,9 @@ class AlbumContainer extends Component {
   /* When the component did update checks if the current album's id is different than
      the previous album's id and if so fetchs the new album's data. */
   componentDidUpdate(prevProps) {
+    console.log("COMPONENTDIDUPDATE");
     if (this.props.album !== prevProps.album) {
+      console.log("ADENTRO DEL IF");
       const url = `https://api.spotify.com/v1/albums/${this.props.album}/tracks`;
       this.props.makeApiFetch(url, getTracksAction);
     }
@@ -67,6 +69,8 @@ class AlbumContainer extends Component {
   }
 
   render() {
+    console.log(this.props.location.state);
+    console.log(this.props.tracks);
     let tracks;
     let tracksByDisc;
     if (this.props.tracks) {
@@ -90,14 +94,14 @@ class AlbumContainer extends Component {
                 <h3>{this.props.artistInfo.name} - {this.props.location.state.albumRelease}</h3>
               </div>
             </div>
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb">
+            <div aria-label="breadcrumb">
+              <ol className="flex-nowrap breadcrumb">
                 <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
-                <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
-                <li className="breadcrumb-item"><Link to={{pathname: '/artist', state: { artistId: this.props.artist }}}><span>Artist</span></Link></li>
-                <li className="breadcrumb-item active" aria-current="page"><span>{this.props.location.state.albumName}</span></li>
+                <li className="breadcrumb-item text-truncate"><Link to="/artists"><span>Artists</span></Link></li>
+                <li className="breadcrumb-item text-truncate"><Link to={{pathname: '/artist', state: { artistId: this.props.artist }}}><span>{this.props.artistInfo.name}</span></Link></li>
+                <li className="breadcrumb-item text-truncate active" aria-current="page"><span>{this.props.location.state.albumName}</span></li>
               </ol>
-            </nav>
+            </div>
           </div>
           <div className="line-separator my-5"></div>
           <div className="container">

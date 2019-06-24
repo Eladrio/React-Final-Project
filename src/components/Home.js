@@ -20,8 +20,8 @@ class Home extends Component {
         </div>
         <div className="main-container content-wrap container">
           <div className="header">
-            <div className="row">
-              <div className="intro-text-container col-md-8">
+            <div className="row justify-content-center">
+              <div className="intro-text-container col-sm-8">
                 <h2>
                   Welcome to
                 </h2>
@@ -34,8 +34,8 @@ class Home extends Component {
                 </h3>
               </div>
             </div>
-            <div className="row">
-              <div className="searchbar-container col-md-8">
+            <div className="row justify-content-center">
+              <div className="searchbar-container col-sm-8">
                 <SearchBarContainer placeholderText="Type the name of your favorite artist" />
               </div>
             </div>
