@@ -44,24 +44,26 @@ function Artist(props) {
       <SearchHeader />
       <div className="content-wrap">
         <div className="container description-container">
-            <div className="row justify-content-center">
-              <div className="col-sm-8">
-                <div className="row align-items-center h-75">
-                  <div className="col-3 h-75">
-                      <img className="h-100 w-100" src={props.artist.img} alt={props.artist.name} />
+            <div className="row justify-content-center h-100">
+              <div className="col-sm-8 h-100">
+                <div className="row align-items-center h-100">
+                  <div className="col-3 h-75 w-75">
+                      <img className="h-100 w-100 description-img" src={props.artist.img} alt={props.artist.name} />
                   </div>
                   <div className="col-6">
                     <h3>{props.artist.name}</h3>
                     <h5>{props.artist.genre[0]}</h5>
                   </div>
                 </div>
-                <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb pl-0">
-                    <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
-                    <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
-                    <li className="breadcrumb-item active" aria-current="page"><span>{props.artist.name}</span></li>
-                  </ol>
-                </nav>
+                <div className="col-sm-8">
+                  <nav aria-label="breadcrumb">
+                    <ol className="flex-nowrap breadcrumb pl-0">
+                      <li className="breadcrumb-item text-truncate"><Link to="/"><span>Home</span></Link></li>
+                      <li className="breadcrumb-item text-truncate"><Link to="/artists"><span>Artists</span></Link></li>
+                      <li className="breadcrumb-item active" aria-current="page"><span>{props.artist.name}</span></li>
+                    </ol>
+                  </nav>
+                </div>
               </div>
             </div>
           </div>

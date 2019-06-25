@@ -57,6 +57,8 @@ class AlbumContainer extends Component {
     }
   }
 
+  /* Dispatchs the Redux action caused by a click in the sort input of the table of songs
+     Changing the value of the corresponding part of the store's state */
   handleSortClick() {
     this.props.sortTable();
   }
@@ -77,12 +79,15 @@ class AlbumContainer extends Component {
     return separatedDiscs;
   }
 
-  sortSongsByDuration(discs) {
+  compareDuration(song, otherSong) {
+    return song.duration_ms - otherSong.duration_ms;
+  }
+
+  /*  */
+  sortSongs(discs, comparer) {
     let toReturn = discs.map((item) => {
       if (Array.isArray(item)) {
-        return item.sort((actualTrack, nextTrack) => {
-          return actualTrack.duration_ms - nextTrack.duration_ms;
-        })
+        return item.sort(comparer);
       }
       else {
         return item;
@@ -100,7 +105,7 @@ class AlbumContainer extends Component {
       tracksByDisc = this.separateByDiscNumber(tracks);
       processedTracks = tracksByDisc;
       if (this.props.sortTableValue) {
-        processedTracks = this.sortSongsByDuration(tracksByDisc);
+        processedTracks = this.sortSongs(tracksByDisc, this.compareDuration);
       }
     }
     else {
@@ -115,7 +120,7 @@ class AlbumContainer extends Component {
               <div className="col-sm-8">
                 <div className="row align-items-center h-75">
                   <div className="col-3 h-75">
-                    <img className="h-100 w-100" src={this.props.location.state.albumImg} alt={this.props.location.state.albumName} sizes="(max-width: 660px) 100vw, 660px" />
+                    <img className="h-100 w-100 description-img" src={this.props.location.state.albumImg} alt={this.props.location.state.albumName} sizes="(max-width: 660px) 100vw, 660px" />
                   </div>
                   <div className="col-6">
                     <h3>{this.props.location.state.albumName}</h3>
