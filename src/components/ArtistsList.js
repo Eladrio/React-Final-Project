@@ -42,7 +42,7 @@ class ArtistsList extends Component {
         let artist = this.props.artistsSearchResult[item];
         let alt = `Image of ${artist.name}`
         return(
-          <div className="col-sm-6 h-100" key={i}>
+          <div className="col-sm-6" key={i}>
               <div className="card shadow p-3 mb-5 h-75 bg-white rounded" >
               <Link to={{pathname: '/artist', state: { artistId: artist.id}}}>
                 <div className="row">

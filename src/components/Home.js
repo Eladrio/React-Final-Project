@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBarContainer from './SearchBarContainer';
 import LogoHeader from './LogoHeader'
-import '../css/Home.css'
 import Footer from './Footer';
 import { connect } from 'react-redux';
 import FavoritesList from './FavoritesList';
