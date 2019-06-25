@@ -1,6 +1,7 @@
 import React from 'react';
 import Track from './Track';
 import '../css/Album.css'
+import SortTable from './SortTable';
 
 /* It manages the presentation of Albums, creates an array of Track components and inserts it
    inside of an array of tables, each one of them corresponding with a disc number */
@@ -19,7 +20,7 @@ function Album(props) {
             <thead className="thead-light">
               <tr>
                 <th scope="col">CD {i + 1}</th>
-                <th scope="col"></th>
+                <th scope="col"><SortTable handleSortClick={props.handleSortClick} /></th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +32,6 @@ function Album(props) {
       </div>
     )
   })
-
   return(
     <div className="tables-container">
       {tables}

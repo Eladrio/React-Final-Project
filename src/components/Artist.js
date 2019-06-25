@@ -44,22 +44,26 @@ function Artist(props) {
       <SearchHeader />
       <div className="content-wrap">
         <div className="container description-container">
-            <div className="row align-items-center h-100">
-              <div className="col h-75">
-                  <img className="h-100 w-100" src={props.artist.img} alt={props.artist.name} />
-              </div>
-              <div className="col-8">
-                <h3>{props.artist.name}</h3>
-                <h3>{props.artist.genre[0]}</h3>
+            <div className="row justify-content-center">
+              <div className="col-sm-8">
+                <div className="row align-items-center h-75">
+                  <div className="col-3 h-75">
+                      <img className="h-100 w-100" src={props.artist.img} alt={props.artist.name} />
+                  </div>
+                  <div className="col-6">
+                    <h3>{props.artist.name}</h3>
+                    <h5>{props.artist.genre[0]}</h5>
+                  </div>
+                </div>
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb pl-0">
+                    <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
+                    <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
+                    <li className="breadcrumb-item active" aria-current="page"><span>{props.artist.name}</span></li>
+                  </ol>
+                </nav>
               </div>
             </div>
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="/"><span>Home</span></Link></li>
-                <li className="breadcrumb-item"><Link to="/artists"><span>Artists</span></Link></li>
-                <li className="breadcrumb-item active" aria-current="page"><span>{props.artist.name}</span></li>
-              </ol>
-            </nav>
           </div>
         <div className="line-separator my-5"></div>
         <div className="container">

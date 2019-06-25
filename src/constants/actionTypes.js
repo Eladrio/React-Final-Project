@@ -7,3 +7,4 @@ export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const SUBMIT_INPUT = "SUBMIT_INPUT";
 export const GET_TOKEN = "GET_TOKEN";
+export const SORT_TABLE = "SORT_TABLE";

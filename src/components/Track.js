@@ -26,7 +26,6 @@ function Track(props) {
   /* if the song its in favorites shows the remove from tooltip's text
      otherwise shows the add to favorites text */
      let favorite = props.favorite;
-     console.log(props.favorite);
      let tooltipTitle = '';
      if (favorite) {
        tooltipTitle = "Remove from favorites";

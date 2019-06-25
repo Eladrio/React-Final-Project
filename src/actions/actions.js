@@ -1,7 +1,6 @@
-import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, GET_TOKEN } from "../constants/actionTypes";
+import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, GET_TOKEN, SORT_TABLE } from "../constants/actionTypes";
 
 function getTokenAction(response) {
-  console.log(response);
   return {
     type: GET_TOKEN,
     payload: response.response
@@ -15,7 +14,6 @@ export function getToken() {
     "client_secret": "bf7abbf4d3864923bb0be8383c8d8cbb"
   };
   let encodedData = btoa(data);
-  console.log(encodedData);
   return async dispatch => {
     try{
      let r = await fetch('https://accounts.spotify.com/api/token',
@@ -26,7 +24,6 @@ export function getToken() {
            "Authorization": "Basic "+ encodedData
           }
        });
-     console.log(r);
      dispatch(getTokenAction({response:r}));
     }
     catch(e){
@@ -73,7 +70,7 @@ export function makeApiFetch(url, callback) {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer BQB_KnhUGvAJgt2iqq-lvO9OeXu351jJGRvZMo8IJxEktPyVRoqiRy8Vx2WwAmjd1nUnLBXHCGPO_59rghU'
+          'Authorization': 'Bearer BQAPhaE9q3A4JALcP5NLA4pWw_qki3SdAycOnbNssHIowsgQLwtgQw34wKQDBYEUfSdQXnb6mdBNLo7F-c4'
         }
       });
       const responseJson = await response.json();
@@ -141,5 +138,12 @@ export function removeFavorite(id) {
   return {
     type: REMOVE_FAVORITE,
     payload: id
+  }
+}
+
+export function sortTable() {
+  return {
+    type: SORT_TABLE,
+    payload: null
   }
 }

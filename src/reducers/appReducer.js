@@ -1,4 +1,4 @@
-import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, SUBMIT_INPUT, GET_TOKEN } from "../constants/actionTypes";
+import { FETCH_ARTISTS, SELECT_ARTIST, FETCH_ALBUMS, SELECT_ALBUM, FETCH_TRACKS, ADD_FAVORITE, REMOVE_FAVORITE, SUBMIT_INPUT, GET_TOKEN, SORT_TABLE } from "../constants/actionTypes";
 
 const initialState = {
   token: "",
@@ -12,6 +12,7 @@ const initialState = {
   selectedAlbumTracks: null,
   favoriteTracksIds: [],
   favoriteTracks: null,
+  sortTable: false
 };
 
 function appReducer(state = initialState, action) {
@@ -79,6 +80,12 @@ function appReducer(state = initialState, action) {
       ...state,
       favoriteTracks: newFavorites,
       favoriteTracksIds: newFavoritesId
+    }
+  }
+  if (action.type === SORT_TABLE) {
+    return {
+      ...state,
+      sortTable: !state.sortTable
     }
   }
     return state;

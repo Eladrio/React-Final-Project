@@ -78,12 +78,12 @@ class ArtistsList extends Component {
         </div>
         <div className="content-wrap">
           <div className="container">
-            <div className="row">
-              <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-sm-8">
                 <h4> Artists </h4>
                 <p> You are currently searching: "{this.props.searchInputText}"</p>
                 <div className="row hide-mobile">
-                  <div className="searchbar-container col-md-8">
+                  <div className="searchbar-container col-sm-8">
                     <SearchBarContainer placeholderText="Search for your favorite artist here" />
                   </div>
                 </div>
