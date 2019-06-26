@@ -24,9 +24,9 @@ class Home extends Component {
                 <h2>
                   Welcome to
                 </h2>
-                <h1>
+                <h2 id="h-app-name">
                   Spotisearch
-                </h1>
+                </h2>
                 <h3>
                   Search your favourite songs over Spotify, just enter
                   an artist's name in the following search box and enjoy!

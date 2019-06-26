@@ -9,6 +9,10 @@ body {
   min-height: 100vh;
 }
 
+#h-app-name {
+  font-size: 3.5em;
+}
+
 .line-separator {
   border-top: 3px solid black;
 }
