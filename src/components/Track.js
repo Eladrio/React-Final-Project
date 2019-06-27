@@ -33,6 +33,7 @@ function Track(props) {
      else {
        tooltipTitle = "Add to favorites";
      }
+
      return(
        <tr>
          <td className="td-name" onClick={() => onSongClick(props.track.preview_url)}>{props.track.name}</td>

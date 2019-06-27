@@ -115,7 +115,7 @@ class AlbumContainer extends Component {
        <div className="page-container">
         <SearchHeader />
         <div className="content-wrap">
-          <div className="container description-container">
+          <div className="container description-container justify-content-center">
             <div className="row justify-content-center">
               <div className="col-sm-8">
                 <div className="row align-items-center h-75">

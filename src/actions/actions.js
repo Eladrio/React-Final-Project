@@ -70,7 +70,7 @@ export function makeApiFetch(url, callback) {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer BQBtf67nkk8sDFbD564XduWWKCXOxZdU4me1JQ8Zocb5tTSrbplb2RBVGyPYXtH_wafjILWxG-QW3EnKwFI'
+          'Authorization': 'Bearer BQAvQCKH4qNdyIzEWpXY6pHB8t0kkK81GRX3qRfno2NsWIYfmNzjjBdvrnlI3XIh9J2FWOzLULIy6bMmXmM'
         }
       });
       const responseJson = await response.json();

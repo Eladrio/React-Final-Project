@@ -7,7 +7,7 @@ import '../css/SearchHeader.css';
 function SearchHeader(props) {
   return (
     <div className="header-container">
-      <div className="navbar navbar-dark navbar-fixed-top">
+      <div className="navbar navbar-dark navbar-fixed-top search-nav">
         <button className="btn navbar-toggler visible-only-mobile" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span ><i className="fas fa-search"></i></span>
         </button>
