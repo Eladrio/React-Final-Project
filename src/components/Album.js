@@ -6,6 +6,7 @@ import SortTable from './SortTable';
 /* It manages the presentation of Albums, creates an array of Track components and inserts it
    inside of an array of tables, each one of them corresponding with a disc number */
 function Album(props) {
+  console.log(props);
   let tables = props.tracks.map((cd,i) => {
     let tracksList = cd.map((item, i) => {
       return (
