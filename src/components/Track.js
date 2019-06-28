@@ -33,12 +33,19 @@ function Track(props) {
      else {
        tooltipTitle = "Add to favorites";
      }
+     let tooltipMobile;
+     if(window.innerWidth <= 768){
+       tooltipMobile = false;
+     } else {
+       tooltipMobile = null;
+     }
+
 
      return(
        <tr>
          <td className="td-name" onClick={() => onSongClick(props.track.preview_url)}>{props.track.name}</td>
          <td className="td-fav text-right">
-          <Tooltip content={tooltipTitle} direction="right" useDefaultStyles forceDirection>
+          <Tooltip className="fav-tooltip" content={tooltipTitle} direction="right" useDefaultStyles isOpen={tooltipMobile}>
             <a onClick={handleFavoriteClick}>
               <i className={`${favorite ? 'fas fa-star' : 'far fa-star'}`}></i>
             </a>
